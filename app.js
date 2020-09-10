@@ -6,4 +6,4 @@ app.use('/', (req, res) => {
     res.send('<h1>404 page not found</h1>');
 })
 
-app.listen(9000);
+app.listen(9000, () => console.log('Listening on port 9000'));
