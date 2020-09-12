@@ -11,6 +11,12 @@
 <body>
     <%- include('./partials/nav.ejs') %>
     <h1>Here are your statistics!!</h1>
+    <% stats.forEach((stat) => { %>
+    <span>--------</span>
+    <h3>Words per minute: <%= stat.wpm %></h3>
+    <h3>Accuracy: <%= stat.acc %> </h3>
+    <span>--------</span>
+    <%})%>
 </body>
 
 </html>

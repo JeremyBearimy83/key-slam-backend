@@ -1,12 +1,19 @@
 const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
+const stats = [];
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
+
+
 app.get('/user/stats', (req, res) => {
-    res.send('<h1>Here are your stats</h1>');
+    res.render('user-stats', { stats: stats });
 })
 
 app.get('/user/race', (req, res) => {
@@ -14,11 +21,13 @@ app.get('/user/race', (req, res) => {
 })
 
 app.get('/user/history', (req, res) => {
-    res.send('<h1>Here is your history</h1>');
+    res.render('user-history');
 })
 
 app.post('/user/race', (req, res) => {
-    res.send("add stats here");
+    stats.push({ wpm: req.body.wpm, acc: req.body.acc });
+    console.log(stats);
+    res.redirect('/user/stats');
 })
 
 app.get('/admin/', (req, res) => {
@@ -30,7 +39,7 @@ app.get('/admin/create-test', (req, res) => {
 })
 
 app.use('/', (req, res) => {
-    res.send('<h1>404 page not found</h1>');
+    res.status(404).render('404');
 })
 
 app.listen(7000, () => console.log('Listening on port 7000'));
