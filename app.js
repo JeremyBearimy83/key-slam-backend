@@ -3,6 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const userRoutes = require("./routes/user");
 const adminRoutes = require("./routes/admin");
+const errorController = require("./controllers/error");
 
 const app = express();
 
@@ -24,8 +25,6 @@ app.use("/admin", adminRoutes);
 //   res.send("Create new typing test here");
 // });
 
-app.use("/", (req, res) => {
-  res.status(404).render("404");
-});
+app.use("/", errorController.getError);
 
-app.listen(7000, () => console.log("Listening on port 7000"));
+app.listen(8000, () => console.log("Listening on port 8000"));

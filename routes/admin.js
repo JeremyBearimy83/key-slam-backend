@@ -1,13 +1,11 @@
 const express = require("express");
 
+const adminController = require("../controllers/admin");
+
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("<h1>Welcome Admin</h1>");
-});
+router.get("/", adminController.getAdmin);
 
-router.get("/create-test", (req, res) => {
-  res.send("Create new typing test here");
-});
+router.get("/create-test", adminController.getNewTest);
 
 module.exports = router;

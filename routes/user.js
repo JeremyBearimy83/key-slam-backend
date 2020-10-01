@@ -1,24 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const stats = [];
+const userController = require("../controllers/users");
 
-router.get("/stats", (req, res) => {
-  res.render("user-stats", { stats: stats });
-});
+router.get("/stats", userController.getStats);
 
-router.get("/race", (req, res) => {
-  res.render("user-race", { user: "Ujjwal Singhal" });
-});
+router.get("/race", userController.getRace);
 
-router.get("/history", (req, res) => {
-  res.render("user-history");
-});
+router.get("/history", userController.getHistory);
 
-router.post("/race", (req, res) => {
-  stats.push({ wpm: req.body.wpm, acc: req.body.acc });
-  console.log(stats);
-  res.redirect("/user/stats");
-});
+router.post("/race", userController.postStats);
 
 module.exports = router;
