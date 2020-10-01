@@ -1,60 +1,51 @@
+body {
+  padding: 0 0;
+  margin: 0px 0px;
+  height: 100vh;
+  font-family: "Oswald", sans-serif;
+  background-color: #212121;
+  color: #14ffec;
+  font-weight: 500;
+}
 
-    body {
-        padding: 0 0;
-        margin: 0px 0px;
-        height: 100vh;
-        font-family: 'Oswald', sans-serif;
-        background-color: #212121;
-        color: #14ffec;
-        font-weight: 500;
-    }
+header {
+  width: 100%;
+  background-color: #323232;
+  height: 7%;
+  color: white;
+}
 
-    header {
-        width: 100%;
-        background-color: #323232;
-        height: 7%;
-        color: white;
-    }
+nav {
+  height: 100%;
+  font-weight: 400;
+}
 
-    nav {
-        height: 100%;
-        font-weight: 400;
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0px 0px;
+  align-items: center;
+  height: 100%;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  margin-left: 1%;
+  font-size: 20px;
+  text-transform: uppercase;
+}
 
-    }
+li {
+  text-decoration: none;
+  margin: 1%;
+  letter-spacing: 1px;
+}
 
-    ul {
+a {
+  text-decoration: none;
+  color: #7eedf1;
+}
 
-        display: flex;
-        flex-direction: row;
-        list-style-type: none;
-        margin: 0px 0px;
-        align-items: center;
-        height: 100%;
-        margin: 0px 0px;
-        padding: 0px 0px;
-        margin-left: 1%;
-        font-size: 20px;
-        text-transform: uppercase;
-
-
-    }
-
-    li {
-        text-decoration: none;
-        margin: 1%;
-        letter-spacing: 1px;
-
-
-
-    }
-
-    a {
-        text-decoration: none;
-        color: #0d7377;
-
-    }
-
-    a:hover {
-        color: white;
-        transition: 0.2s;
-    }
+a:hover {
+  color: #f3116e;
+  transition: 0.2s;
+}

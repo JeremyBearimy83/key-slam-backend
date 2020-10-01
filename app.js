@@ -1,45 +1,31 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
+const userRoutes = require("./routes/user");
+const adminRoutes = require("./routes/admin");
 
 const app = express();
-const stats = [];
 
-app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.set("view engine", "ejs");
+app.set("views", "views");
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('public'));
+app.use(express.static("public"));
 
+app.use("/user", userRoutes);
 
-app.get('/user/stats', (req, res) => {
-    res.render('user-stats', { stats: stats });
-})
+app.use("/admin", adminRoutes);
 
-app.get('/user/race', (req, res) => {
-    res.render('user-race', { user: "Ujjwal Singhal" });
-})
+// app.get("/admin/", (req, res) => {
+//   res.send("<h1>Welcome Admin</h1>");
+// });
 
-app.get('/user/history', (req, res) => {
-    res.render('user-history');
-})
+// app.get("/admin/create-test", (req, res) => {
+//   res.send("Create new typing test here");
+// });
 
-app.post('/user/race', (req, res) => {
-    stats.push({ wpm: req.body.wpm, acc: req.body.acc });
-    console.log(stats);
-    res.redirect('/user/stats');
-})
+app.use("/", (req, res) => {
+  res.status(404).render("404");
+});
 
-app.get('/admin/', (req, res) => {
-    res.send("<h1>Welcome Admin</h1>");
-})
-
-app.get('/admin/create-test', (req, res) => {
-    res.send('Create new typing test here');
-})
-
-app.use('/', (req, res) => {
-    res.status(404).render('404');
-})
-
-app.listen(7000, () => console.log('Listening on port 7000'));
+app.listen(7000, () => console.log("Listening on port 7000"));
