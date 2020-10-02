@@ -12,10 +12,10 @@ exports.postStats = (req, res) => {
 
 exports.getStats = (req, res) => {
   Stat.fetchAll((stats) => {
-    res.render("user-stats", { stats: stats });
+    res.render("user-stats", { stats: stats, pageTitle: "stats" });
   });
 };
 
 exports.getHistory = (req, res) => {
-  res.render("user-history");
+  res.render("user-history", { pageTitle: "history" });
 };

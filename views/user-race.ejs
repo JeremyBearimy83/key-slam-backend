@@ -1,28 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('./partials/header.ejs') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-    <%- include('./partials/links.ejs') %>
-
-</head>
-
-
-<body>
-
-    <%- include('./partials/nav.ejs') %>
-
-    <main>
-        <h1>Hello fellow typist!</h1>
-        <h3>Enter your wpm and accuracy!</h3>
-        <form action="/user/race" method="POST">
-            <input type="text" name="wpm">
-            <input type="text" name="acc">
-            <button type="submit">Finish Race</button>
-        </form>
-    </main>
-</body>
-
-</html>
+<main>
+    <h1>Hello fellow typist!</h1>
+    <h3>Enter your wpm and accuracy!</h3>
+    <form action="/user/race" method="POST">
+        <input type="text" name="wpm">
+        <input type="text" name="acc">
+        <button type="submit">Finish Race</button>
+    </form>
+</main>
+<%- include('./partials/footer.ejs') %>
