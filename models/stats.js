@@ -8,12 +8,14 @@ const p = path.join(
 );
 
 module.exports = class Stat {
-  constructor(wpm, acc) {
+  constructor(wpm, acc, mis) {
     this.wpm = wpm;
     this.acc = acc;
+    this.mis = mis.split(" ");
   }
 
   save() {
+    this.id = String(Math.random());
     fs.readFile(p, (err, fileContent) => {
       let stats = [];
       if (!err) {
@@ -22,13 +24,30 @@ module.exports = class Stat {
       stats.push(this);
       fs.writeFile(p, JSON.stringify(stats), (err) => console.log(err));
     });
-    // stats.push(this);
   }
 
   static fetchAll(cb) {
     fs.readFile(p, (err, fileContent) => {
-      if (err) cb([]);
-      else cb(JSON.parse(fileContent));
+      if (err) {
+        console.log(err);
+        cb([]);
+      } else {
+        cb(JSON.parse(fileContent));
+      }
+    });
+  }
+
+  static findById(id, cb) {
+    fs.readFile(p, (err, fileContent) => {
+      const stats = JSON.parse(fileContent);
+      console.log(typeof id);
+      console.log(stats);
+      const stat = stats.find((el) => {
+        console.log(typeof id);
+        return el.id == id;
+      });
+      console.log(stat);
+      cb(stat);
     });
   }
 };

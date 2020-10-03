@@ -4,10 +4,11 @@
 
 <% stats.forEach((stat) => { %>
 
-<span>--------</span>
+
 <h3>Words per minute: <%= stat.wpm %></h3>
 <h3>Accuracy: <%= stat.acc %> </h3>
-<span>--------</span>
+<a class="btn fill" href='/user/stats/<%= stat.id %>'>Details</a>
+
 
 <%})%>
 <%- include('./partials/footer.ejs') %>

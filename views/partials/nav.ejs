@@ -1,8 +1,9 @@
 <header>
     <nav>
         <ul>
-            <li><a class='active' href="/user/stats">Stats</a></li>
-            <li><a href="/user/race">Race</a></li>
+            <li><a <% if (pageTitle === 'stats') { %>class='active' <% } %> href="/user/stats">Stats</a></li>
+            <li><a <% if (pageTitle === 'race') { %>class='active' <% } %> href="/user/race">Race</a></li>
+            <li><a <% if (pageTitle === 'history') { %>class='active' <% } %> href="/user/history">History</a></li>
         </ul>
     </nav>
 </header>

@@ -1,0 +1,12 @@
+<%- include('./partials/header.ejs')  %>
+
+<h3>Words per minute: <%= stat.wpm %></h3>
+<h3>Accuracy: <%= stat.acc %> </h3>
+
+<h3>Mistakes: </h3>
+<% stat.mis.forEach(element => { %>
+<div> <%= element %> </div>
+
+<% }) %>
+
+<%- include('./partials/footer.ejs') %>
