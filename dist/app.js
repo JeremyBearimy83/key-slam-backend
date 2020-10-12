@@ -1,11 +1,8 @@
 "use strict";
-/**
- * TODO: Make mongo work like this
- * TODO: Make TypeScript and import work
- * TODO: Use mongo connect only when required
- * TODO: Configure .gitignore
- *
- */
+//// Make mongo work like this
+//// Make TypeScript and import work
+// TODO: Use mongo connect only when required
+// TODO: Configure .gitignore
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -36,6 +33,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // const userRoutes = require("./routes/user");
 // const adminRoutes = require("./routes/admin");
 // const errorController = require("./controllers/error");
+require("dotenv").config();
 var express_1 = __importDefault(require("express"));
 var body_parser_1 = __importDefault(require("body-parser"));
 var mongoose_1 = __importDefault(require("mongoose"));
@@ -43,7 +41,7 @@ var user_1 = __importDefault(require("./routes/user"));
 var admin_1 = __importDefault(require("./routes/admin"));
 var errorController = __importStar(require("./controllers/error"));
 var app = express_1.default();
-var dbURI = "mongodb+srv://JeremyBearimy:ireneadler83@cluster0.cb7ve.mongodb.net/Key-Slam?retryWrites=true&w=majority";
+var dbURI = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@cluster0.cb7ve.mongodb.net/Key-Slam?retryWrites=true&w=majority";
 mongoose_1.default
     .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(function (result) {
@@ -52,7 +50,7 @@ mongoose_1.default
 })
     .catch(function (err) { return console.log(err); });
 app.set("view engine", "ejs");
-app.set("views", "../views");
+app.set("views", "views");
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.static("public"));
 app.use("/user", user_1.default);

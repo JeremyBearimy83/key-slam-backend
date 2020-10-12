@@ -1,10 +1,7 @@
-/**
- * TODO: Make mongo work like this
- * TODO: Make TypeScript and import work
- * TODO: Use mongo connect only when required
- * TODO: Configure .gitignore
- *
- */
+//// Make mongo work like this
+//// Make TypeScript and import work
+// TODO: Use mongo connect only when required
+// TODO: Configure .gitignore
 
 // const express = require("express");
 // const path = require("path");
@@ -14,7 +11,7 @@
 // const userRoutes = require("./routes/user");
 // const adminRoutes = require("./routes/admin");
 // const errorController = require("./controllers/error");
-
+require("dotenv").config();
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
@@ -25,8 +22,7 @@ import * as errorController from "./controllers/error";
 
 const app = express();
 
-const dbURI =
-  "mongodb+srv://JeremyBearimy:ireneadler83@cluster0.cb7ve.mongodb.net/Key-Slam?retryWrites=true&w=majority";
+const dbURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.cb7ve.mongodb.net/Key-Slam?retryWrites=true&w=majority`;
 
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
